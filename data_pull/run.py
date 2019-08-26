@@ -1,7 +1,8 @@
-from scrapers.IndexScraper import IndexScraper
 
-scraper = IndexScraper()
+from scrapers.SubjectScraper import SubjectScraper
 
-scraper.run()
+scraper = SubjectScraper("comp30023")
+
+scraper.run("comp30023")
 
 
