@@ -15,7 +15,6 @@ REQUIREMENTS_SUFFIX = "eligibility-and-requirements"
 URL_SUFFIX = "what-will-i-study"
 
 
-
 # html constants
 HTML_PARSER = "html.parser"
 TEXT_ELEMENT = "a"
@@ -34,6 +33,8 @@ SPAN = "span"
 LABEL = "aria-label"
 PARAGRAPH = "p"
 LIST_CONTAINER = "li"
+ROLE =  "role"
+CELL = "cell"
 
 # parsing constants
 PLAN_KEY_TABLE = "sample-plan__legend-keys"
@@ -51,6 +52,9 @@ MAJOR_ELECTIVE_PREREQUISITE = "sample-plan__subject sample-plan__subject--major 
 MAJOR_ELECTIVE = "sample-plan__subject sample-plan__subject--major elective"
 RECOMMENDED = "sample-plan__subject sample-plan__subject--recommended"
 
+PLAN_SEMESTER = "sample-plan__semester"
+SEMESTER_CLASS_LIST = "sample-plan__semester"
+OVERALL_PLAN = "sample-plan__years"
 
 class MajorRequirementsScraper(Scraper):
 
@@ -73,6 +77,7 @@ class MajorRequirementsScraper(Scraper):
         return self.busy
 
     def open_page(self, url):
+        print(url)
         super().retrieve(url)
 
     def fetch_page_html(self):
@@ -81,42 +86,54 @@ class MajorRequirementsScraper(Scraper):
 
     def parse(self, soup):
         keys = self.get_keys(soup)
-        self.get_semesters(keys, soup)
+        slots = self.get_all_classes(soup)
+        return keys, slots
 
     def get_keys(self, soup):
         return list(set(map(lambda x: x.get_text(), soup.find_all(SPAN, attrs={
                                  CLASS_ATRIBUTE: PLAN_KEY_ELEMENT}))))
-
-    def get_semesters(self, keys, soup):
-        year_one = soup.find(attrs={LABEL: YEAR_1})
-        print(year_one)
-        self.get_semester_classes(year_one, keys)
     
-    def get_semester_classes(self, year, keys):
-        codes = year.find_all(PARAGRAPH)
-        print(codes)
-        
-                    
-    def populate_json(self, overview, reqs):
+    def get_all_classes(self, soup):
+        print("here")
+        counter = 0
+        res = defaultdict(list)
+        semesters = soup.find_all(attrs={CLASS_ATRIBUTE: "sample-plan__subjects"})
+        for semester in semesters:
+            splits = semester.find_all('li')
+            for course in splits:
+                print("inner here")
+                slot_type = course.find(title=True)
+                slot = slot_type.contents[0]
+                print(slot)
+                code = course.find(SPAN, {CLASS_ATRIBUTE: "sample-plan__subject-code"})
+                check = code if code else [None]
+                res[slot]+=check
+        return res
+
+    def populate_json(self, keys, slots):
         jsondict = dict()
         try:
+            jsondict["slots"] = slots
+            jsondict["keys"] = keys
             return jsondict
         except TypeError and KeyError:
             self.critical_logger("KEY_ERROR || TYPE_ERROR")
             return {"INVALID_PARSE": "CHECK LOGS FOR DETAILS"}
         return jsondict
 
-    def write(self, jsondict, subject):
-        f = open(r"data/{}.json".format(subject), "w")
+    def write(self, jsondict, grad_level, course, major):
+        f = open(r"majors/{}/{}/{}.json".format(grad_level, course, major), "w")
         json.dump(jsondict, f)
         f.close()
 
     # entry into the scripting here <<< read through the functions in this order
-    def run(self, major):
+    def run(self, grad_level, course, major):
         self.busy = True
         self.open_page(self.get_page_url(major))
-        self.parse(self.fetch_page_html())
-        super().close()
+        keys, slots = self.parse(self.fetch_page_html())
+        jsondict = self.populate_json(keys, slots)
+        print(jsondict)
+        self.write(jsondict, grad_level, course, major)
         self.busy = False
 
     def logger(self, code):
