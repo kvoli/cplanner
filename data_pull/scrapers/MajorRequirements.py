@@ -94,12 +94,14 @@ class MajorRequirementsScraper(Scraper):
                                  CLASS_ATRIBUTE: PLAN_KEY_ELEMENT}))))
     
     def get_all_classes(self, soup):
+        print("here")
         counter = 0
         res = defaultdict(list)
         semesters = soup.find_all(attrs={CLASS_ATRIBUTE: "sample-plan__subjects"})
         for semester in semesters:
             splits = semester.find_all('li')
             for course in splits:
+                print("inner here")
                 slot_type = course.find(title=True)
                 slot = slot_type.contents[0]
                 print(slot)
@@ -130,6 +132,7 @@ class MajorRequirementsScraper(Scraper):
         self.open_page(self.get_page_url(major))
         keys, slots = self.parse(self.fetch_page_html())
         jsondict = self.populate_json(keys, slots)
+        print(jsondict)
         self.write(jsondict, grad_level, course, major)
         self.busy = False
 

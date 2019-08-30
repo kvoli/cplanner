@@ -12,7 +12,7 @@ def local_run():
     scraper = MajorRequirementsScraper()
     course = ""
 
-    with open(r'majors/undergraduate/bachelor-of-biomedicine.json', 'r') as code_file:
+    with open(r'majors/undergraduate/bachelor-of-commerce.json', 'r') as code_file:
         f = json.load(code_file)
         course = f['course']
         for item in f['data']:
