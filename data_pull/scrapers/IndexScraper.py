@@ -22,14 +22,11 @@ TABLE_ELEMENT = "table"
 SUBJECT_LINK_HEADER = "search-results__accordion-title"
 SUBJECT_CODE_ELEMENT = 1
 
-# 404 Error Code
-ERROR_404_PAGE = 404
-
 
 class IndexScraper(Scraper):
 
     def __init__(self):
-        super().__init__(self.get_page_url(1))
+        super().__init__()
         self.data = []
         self.page = 2
         self.parse_time = time.time()
@@ -78,7 +75,9 @@ class IndexScraper(Scraper):
         super().close()
 
     def logger(self, codes):
-        parse_time_taken = time.time() - self.parse_time
+        delta = time.time() - self.parse_time
+        self.parse_time = time.time()
         batch_number = self.page / 10
+        
         self.log.info("BATCH {}\n TIME TAKEN: {}\n".format(
-            batch_number, parse_time_taken))
+            batch_number, delta))

@@ -9,12 +9,9 @@ CHROME_DRIVER = os.environ['CHROME_DRIVER']
 
 class Scraper(ABC):
 
-    def __init__(self, url):
+    def __init__(self):
         self.driver = webdriver.Chrome(executable_path=CHROME_DRIVER,
                                        options=self._getoptions())
-        print("start chrome")
-        print(url)
-        self.retrieve(page_url=url)
 
     @staticmethod
     def _getoptions():
@@ -56,3 +53,4 @@ class Scraper(ABC):
     @abstractmethod
     def run(self):
         pass
+        
