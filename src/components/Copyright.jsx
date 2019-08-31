@@ -6,13 +6,13 @@ const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://funwithfriends.net">
         CPlanner
       </Link>{' '}
       {new Date().getFullYear()}
       {'. Built with '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI.
+      <Link color="inherit" href="https://github.com/kvoli">
+        Love & Compassion Bby
       </Link>
     </Typography>
   );

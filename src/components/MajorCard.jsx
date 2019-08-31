@@ -55,7 +55,7 @@ const MajorCard = ({ major }) => {
           dispatch(selectMajor(major));
         }}
         component={Link}
-        to="/SubjectPicker"
+        to="/Subjects"
         >
         <CardContent className={classes.cardContent}>
           <Grid container direction="column" alignItems="center" justify="center">

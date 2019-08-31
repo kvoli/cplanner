@@ -1,3 +1,7 @@
 export const SELECT_MAJOR = "SELECT_MAJOR";
 export const SELECT_COURSE = "SELECT_COURSE";
 export const CLEAR_SELECTION = "CLEAR_SELECTION"
+export const FILTER_CORE =  "FILTER_CORE"
+export const FILTER_COURSE = "FILTER_COURSE"
+export const FILTER_BREADTH = "FILTER_BREADTH"
+export const FILTER_ALL = "FILTER_ALL"

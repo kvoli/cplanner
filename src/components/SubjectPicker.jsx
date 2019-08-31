@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { sizing } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,13 +29,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SubjectPicker = () => {
+  const dispatch = useDispatch();
+  const subjects = useSelector(store => store.subjects)
+  const selection = useSelector(store => store.selection)
   const classes = useStyles();
+
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+
+
   return (
     <Container className={classes.root} >
       <Grid className={classes.grid} container direction='row'>
         <Grid item xs={8}>
-          <Typography className={classes.course} variant='h2'>Course</Typography>
-          <Typography className={classes.major} variant='h4'>Bachelor of Agriculture</Typography>
+          <Typography className={classes.course} variant='h2'>{selection.major}</Typography>
+          <Typography className={classes.major} variant='h4'>Bachelor of {selection.course}</Typography>
           <Container className={classes.courseStuff}>
             <CourseList />
           </Container>
