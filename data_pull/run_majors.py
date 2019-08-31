@@ -12,8 +12,9 @@ def local_run():
     scraper = MajorRequirementsScraper()
     course = ""
 
-    with open(r'majors/undergraduate/bachelor-of-commerce.json', 'r') as code_file:
+    with open(r'majors/undergraduate/bachelor-of-biomedicine.json', 'r') as code_file:
         f = json.load(code_file)
+        code_file.close()
         course = f['course']
         for item in f['data']:
             queue.append(item)
@@ -22,8 +23,15 @@ def local_run():
         if scraper.busy:
             time.sleep(2)
         else:
+            code_file.close()
             major = queue.popleft().replace(" ", "-").lower()
-            scraper.run("undergraduate", course, major)
+            current_data = scraper.run("undergraduate", course, major)
+            f[major] = current_data
+    
+    with open(r'majors/bachelor-of-biomedicine.json', 'w') as code_file:
+        json.dump(f, code_file)
+        code_file.close()
+
 
 if __name__ == "__main__":
     local_run()

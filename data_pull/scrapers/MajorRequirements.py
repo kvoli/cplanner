@@ -122,9 +122,9 @@ class MajorRequirementsScraper(Scraper):
         return jsondict
 
     def write(self, jsondict, grad_level, course, major):
-        f = open(r"majors/{}/{}/{}.json".format(grad_level, course, major), "w")
-        json.dump(jsondict, f)
-        f.close()
+        small_write = open(r"majors/{}/{}/{}.json".format(grad_level, course, major), "w")
+        json.dump(jsondict, small_write)
+        small_write.close()
 
     # entry into the scripting here <<< read through the functions in this order
     def run(self, grad_level, course, major):
@@ -135,6 +135,7 @@ class MajorRequirementsScraper(Scraper):
         print(jsondict)
         self.write(jsondict, grad_level, course, major)
         self.busy = False
+        return jsondict
 
     def logger(self, code):
         delta = time.time() - self.parse_time
