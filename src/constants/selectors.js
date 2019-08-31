@@ -1,0 +1,3 @@
+export const SELECT_MAJOR = "SELECT_MAJOR";
+export const SELECT_COURSE = "SELECT_COURSE";
+export const CLEAR_SELECTION = "CLEAR_SELECTION"

@@ -4,19 +4,10 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import IconButton from "@material-ui/core/IconButton";
-import { selectCourse } from "../actions/selectorActions";
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectMajor } from "../actions/selectorActions";
 
 const useStyles = makeStyles(theme => ({
-  largeButton: {
-    paddingRight: theme.spacing(8),
-    paddingLeft: theme.spacing(8),
-
-  },
-  largeIcon: {
-    fontSize: "3em"
-  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
@@ -31,6 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     flexGrow: 1,
+    padding: theme.spacing(0.5),
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -47,50 +39,36 @@ const useStyles = makeStyles(theme => ({
   pos: {
     marginBottom: 12,
   },
-  input: {
-    display: 'none',
-  },
 }));
 
-const CourseCard = ({ course }) => {
+const MajorCard = ({ major }) => {
 
   const classes = useStyles();
-  const years = "3 years full time or 6 years part time"
-  const points = "300 Points"
-  const type = "Bachelor's Degree"
-  const year = "2019"
-
   const dispatch = useDispatch();
   const state = useSelector(store => store)
+
 
   return (
     <Card className={classes.card}>
       <CardActionArea
-
-        onClick={() => {
-          dispatch(selectCourse(course));
+      
+      onClick={() => {
+          dispatch(selectMajor(major));
         }}
-        component={Link}
-        to="/majors"
-      >
+        // component={Link}
+        // to="/SubjectPicker"
+        >
         <CardContent className={classes.cardContent}>
-          <Grid container direction="column" alignItems="center" justify="stretch">
+          <Grid container direction="column" alignItems="center" justify="center">
             <Grid item>
-              <Typography gutterBottom variant="h4" component="h2">
-                {course}
+              <Typography variant="body2" component="body2" align="center" className={classes.bullet} >
+                {major}
               </Typography>
             </Grid>
             <Grid item>
-            <ListItemText primary={type}/>
-            </Grid>
-            <Grid item>
-              <ListItemText secondary={points} />
-            </Grid>
-            <Grid item>
-                <IconButton className={classes.largeButton} >
-                  <LocalLibraryIcon className={classes.largeIcon} />
-                </IconButton>
-
+              <IconButton  >
+                <LocalLibraryIcon />
+              </IconButton>
             </Grid>
           </Grid>
         </CardContent>
@@ -99,4 +77,4 @@ const CourseCard = ({ course }) => {
   )
 }
 
-export default CourseCard;
+export default MajorCard;
