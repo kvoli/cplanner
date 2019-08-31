@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import CourseCard from "./CourseCard";
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -45,36 +46,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CoursePicker = () => {
-  const courses = ["Science", "Design", "Commerce", "Biomedicine", "Arts", "Agriculture"]
+  const dispatch = useDispatch();
+  const courses = useSelector(store => store.courses)
   const classes = useStyles();
 
   return (
     <React.Fragment>
-    <div className={classes.heroContent}>
-      <Container maxWidth="sm">
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Choose a course ...
+      <div className={classes.heroContent}>
+        <Container maxWidth="sm">
+          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            Choose a course ...
         </Typography>
-      </Container>
-    </div>
-    <Container className={classes.cardGrid} maxWidth="md">
-      <Grid
-        container
-        spacing={4}
-        direction="column"
-        alignItems="center"
-        justify="flex-start"
-        style={{ minHeight: '100vh' }}
-      >
-        <Grid container spacing={4}>
-          {courses.map(course => (
-            <Grid item key={course} xs={12} sm={6} md={4}>
-              <CourseCard course={course} />
-            </Grid>
-          ))}
+        </Container>
+      </div>
+      <Container className={classes.cardGrid} maxWidth="md">
+        <Grid
+          container
+          spacing={4}
+          direction="column"
+          alignItems="center"
+          justify="flex-start"
+          style={{ minHeight: '100vh' }}
+        >
+          <Grid container spacing={4}>
+            {Object.keys(courses).map((key) => (
+              <Grid item key={key} xs={12} sm={6} md={4}>
+                <CourseCard course={key} />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
     </React.Fragment>
   )
 };

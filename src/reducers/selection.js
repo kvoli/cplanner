@@ -2,7 +2,7 @@ import { SELECT_COURSE, SELECT_MAJOR, CLEAR_SELECTION } from "../constants/selec
 
 const initialState = { course: false, major: false };
 
-function rootReducer(state = initialState, action) {
+function selection(state = initialState, action) {
   switch (action.type) {
     case SELECT_COURSE:
       return {
@@ -23,4 +23,4 @@ function rootReducer(state = initialState, action) {
   return state;
 };
 
-export default rootReducer;
+export default selection;

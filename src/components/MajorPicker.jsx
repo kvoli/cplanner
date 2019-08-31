@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import MajorCard from "./MajorCard";
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   heroContent: {
@@ -39,9 +40,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MajorPicker = () => {
-  const majors = ["Agricultural Science", "Animal Health and Disease", "Animal Science and Management", "Biochemistry and Molecular Biology", "Bioengineering Systems", "Biotechnology", "Cell and Developmental Biology", "Chemical Systems", "Chemistry", "Civil Systems", "Climate and Weather", "Computational Biology", "Computing and Software Systems", "Data Science", "Ecology and Evolutionary Biology", "Ecosystem Science", "Electrical Systems", "Environmental Engineering Systems", "Environmental Science", "Food Science", "Genetics", "Geography", "Geology", "Human Nutrition", "Human Structure and Function", "Immunology", "Marine Biology", "Mathematical Physics", "Mathematics and Statistics", "Mechanical Systems", "Mechatronics Systems", "Microbiology and Immunology", "Neuroscience", "Pathology", "Pharmacology", "Physics", "Physiology", "Plant Science", "Psychology", "Spatial Systems", "Zoology"]
-  const course = "Bachelor of Science"
+
+  const dispatch = useDispatch();
+  const courses = useSelector(store => store.courses)
+  const course  = useSelector(store => store.selection.course)
   const classes = useStyles();
+  console.log(courses)
+  console.log(course)
+  const majors = courses[course]['data']
+
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
 
   return (
     <React.Fragment>

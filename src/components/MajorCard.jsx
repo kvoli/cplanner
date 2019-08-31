@@ -6,6 +6,7 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import IconButton from "@material-ui/core/IconButton";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMajor } from "../actions/selectorActions";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   cardGrid: {
@@ -45,8 +46,6 @@ const MajorCard = ({ major }) => {
 
   const classes = useStyles();
   const dispatch = useDispatch();
-  const state = useSelector(store => store)
-
 
   return (
     <Card className={classes.card}>
@@ -55,8 +54,8 @@ const MajorCard = ({ major }) => {
       onClick={() => {
           dispatch(selectMajor(major));
         }}
-        // component={Link}
-        // to="/SubjectPicker"
+        component={Link}
+        to="/SubjectPicker"
         >
         <CardContent className={classes.cardContent}>
           <Grid container direction="column" alignItems="center" justify="center">

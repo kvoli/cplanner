@@ -62,6 +62,9 @@ const CourseCard = ({ course }) => {
 
   const dispatch = useDispatch();
   const state = useSelector(store => store)
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
 
   return (
     <Card className={classes.card}>
@@ -77,19 +80,19 @@ const CourseCard = ({ course }) => {
           <Grid container direction="column" alignItems="center" justify="stretch">
             <Grid item>
               <Typography gutterBottom variant="h4" component="h2">
-                {course}
+                {course.capitalize()}
               </Typography>
             </Grid>
             <Grid item>
-            <ListItemText primary={type}/>
+              <ListItemText primary={type} />
             </Grid>
             <Grid item>
               <ListItemText secondary={points} />
             </Grid>
             <Grid item>
-                <IconButton className={classes.largeButton} >
-                  <LocalLibraryIcon className={classes.largeIcon} />
-                </IconButton>
+              <IconButton className={classes.largeButton} >
+                <LocalLibraryIcon className={classes.largeIcon} />
+              </IconButton>
 
             </Grid>
           </Grid>
