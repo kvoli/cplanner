@@ -11,14 +11,15 @@ const useStyles = makeStyles(theme => ({
   card: {
     margin: 10,
     width: 110,
-    height: 110
+    height: 110,
+    fontSize: 10
   },
   text: {
     paddingLeft: 5,
     paddingRight: 5,
     paddingTop: 5,
     paddingBottom: 5,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   title: {
     paddingTop: 10
@@ -44,7 +45,7 @@ const SubjectCard = ({props}) => {
       <Card className={classes.card}>
         <CardContent className={classes.text}>
           <Typography onClick={() => dispatch(openSubject(subject))}>{subject.code}</Typography>
-          <Typography className={classes.title}>{subject.name}}</Typography>
+          <Typography className={classes.title}>{subject.name}</Typography>
         </CardContent>
       </Card>
     </Grid>
