@@ -9,9 +9,12 @@ import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   semester: {
-    backgroundColor: '#CC1B1B',
-    padding: 0,
-    margin: 0
+    //backgroundColor: '#CC1B1B',
+    margin: 0,
+    paddingLeft: 15,
+    paddingRight: 15, 
+    paddingTop: 5,
+    paddingBottom: 5
   },
   when: {
     textAlign: 'center',
@@ -23,18 +26,15 @@ const SemesterGrid = ({props}) => {
   console.log(props)
   const classes = useStyles();
   return (
-    <ListItem className={classes.semester}>
+    <Grid item className={classes.semester}>
+      <Typography>Semester 1</Typography>
       <Grid container direction="row">
-        <Grid className={classes.when} item>
-          <Typography>2019</Typography>
-          <Typography>Semester 1</Typography>
-        </Grid>
         <SubjectCard props={{ row: props.row, col: 0 }} />
         <SubjectCard props={{ row: props.row, col: 1 }} />
         <SubjectCard props={{ row: props.row, col: 2 }} />
         <SubjectCard props={{ row: props.row, col: 3 }} />
       </Grid>
-    </ListItem>
+    </Grid>
   );
 }
 

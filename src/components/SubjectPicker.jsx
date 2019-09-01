@@ -14,19 +14,23 @@ import SubjectModal from "./SubjectModal";
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    backgroundColor: '#FB1BFB',
+    //backgroundColor: '#FB1BFB',
     maxWidth: 1920,
     padding: 0
   },
   course: {
-    paddingLeft: 20,
+    paddingTop: 45,
+    paddingLeft: 45,
+    paddingBottom: 30,
   },
   major: {
-    paddingLeft: 65,
+    paddingBottom: 50, 
+    paddingLeft: 100,
+    
   },
   courseStuff: {
-    paddingLeft: 100
-  },
+    paddingLeft: 0
+  }
 }));
 
 const SubjectPicker = () => {
@@ -52,9 +56,7 @@ const SubjectPicker = () => {
         </Grid>
         <Grid item xs={4}>
           <Requirements />
-          <Container>
-            <SubjectSelector />
-          </Container>
+          <SubjectSelector/>
         </Grid>
       </Grid>
     </Container>
