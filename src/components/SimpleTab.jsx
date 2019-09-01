@@ -8,12 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-<<<<<<< HEAD
-import SearchBar from "./SearchBar";
-=======
 import SubjectCard from './SubjectCard';
 import { GridContextProvider, GridDropZone, GridItem, swap } from 'react-grid-dnd';
->>>>>>> ceeddf5cc0156f9275f158f13da3c581b8467930
+import SearchBar from "./SearchBar"
+import SubjectSelectionGrid from "./SubjectSelectionGrid";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,32 +82,11 @@ export default function SimpleTab({course,major,breadth}) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <Grid container >
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-          <Grid item>
-            <SubjectCard props={{row: 0,col:0}}/>
-          </Grid>
-        </Grid>
+      <SubjectSelectionGrid />
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <SearchBar />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <SearchBar />
       </TabPanel>
     </div>
   );

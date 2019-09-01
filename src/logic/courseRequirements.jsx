@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-
 export const getBreadths = () => {
   const { course, major, subject, subjectModal } = useSelector(store => store.selection)
   const subjects = useSelector(store => store.subjects)
@@ -11,31 +10,16 @@ export const getMajor = () => {
   const { course, major, subject, subjectModal } = useSelector(store => store.selection)
   const subjects = useSelector(store => store.subjects)
   const courses = useSelector(store => store.courses)
+  return {
+    courses.course.major.slots
+  }
 }
 
-export const getCourse = () => {
-  const subjects = useSelector(store => store.subjects)
-  const { course, major, subject, subjectModal } = useSelector(store => store.selection)
+// export const getCourse = () => {
+//   const subjects = useSelector(store => store.subjects)
+//   const { course, major, subject, subjectModal } = useSelector(store => store.selection)
+//   return {
+//     subjects.filter(subject => {})
 
-  return (
-    
-  )
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+//   }
+// }

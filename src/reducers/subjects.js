@@ -1,6 +1,6 @@
-import { subjectDict } from "../assets/subjectDict";
+import { subjectList } from "../assets/subjectList";
 
-const initialState = subjectDict
+const initialState = subjectList
 
 const subjectsObject = (state = initialState, action) => {
   switch (action.type) {

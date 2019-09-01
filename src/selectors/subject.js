@@ -1,13 +1,26 @@
 import { createSelector } from "reselect";
+import Fuse from 'fuse.js'
+import { subjectList } from "../assets/subjectList"
+
+const options = {
+  shouldSort: true,
+  threshold: 0.08,
+  location: 0,
+  distance: 10,
+  maxPatternLength: 10,
+  minMatchCharLength: 4,
+  keys: [
+    "code",
+    "name"
+  ]
+};
+
+const fuse = new Fuse(subjectList, options); // "list" is the item array
 
 const getFilterAllSubjects = (state) => state.filters.filter_all
-const getSubjects = (state) => state.subjects
 
 export const getFilteredSubjects = createSelector(
-  [getFilterAllSubjects, getSubjects],
-  (filter_all, subjects) => subjects.filter(
-    subject => (subject.name.toLowerCase().trim().includes(subjectFilter.toLowerCase().trim())
-      || subject.code.toLowerCase().trim().includes(subjectFilter.toLowerCase().trim())
-      || "^\\s*$".match(subjectFilter))
+  [getFilterAllSubjects],
+  (filter_all) => (fuse.search(filter_all)
   )
 )

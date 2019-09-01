@@ -77,7 +77,7 @@ const CourseCard = ({ course }) => {
         to="/majors"
       >
         <CardContent className={classes.cardContent}>
-          <Grid container direction="column" alignItems="center" justify="stretch">
+          <Grid container direction="column" alignItems="center" justify="center">
             <Grid item>
               <Typography gutterBottom variant="h4" component="h2">
                 {course.capitalize()}
