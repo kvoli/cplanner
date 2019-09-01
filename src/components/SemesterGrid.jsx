@@ -27,7 +27,7 @@ const SemesterGrid = ({props}) => {
   const classes = useStyles();
   return (
     <Grid item className={classes.semester}>
-      <Typography>Semester 1</Typography>
+      <Typography>Semester {props.row + 1}</Typography>
       <Grid container direction="row">
         <SubjectCard props={{ row: props.row, col: 0 }} />
         <SubjectCard props={{ row: props.row, col: 1 }} />

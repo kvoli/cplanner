@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { useSelector, useDispatch } from 'react-redux';
 import { openSubject } from "../actions/subjectSelector";
-
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -26,14 +27,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const SubjectCard = ({props}) => {
+const SubjectCard = ({ props }) => {
   console.log(props)
   const row = props.row
   const col = props.col
   console.log(row, col)
 
   const dispatch = useDispatch();
-  
+
   const subjectSelector = useSelector(store => store.subjectSelector.subjectList)
   console.log(subjectSelector)
   const subject = subjectSelector[row][col]
@@ -43,8 +44,21 @@ const SubjectCard = ({props}) => {
     <Grid item>
       <Card className={classes.card}>
         <CardContent className={classes.text}>
-          <Typography onClick={() => dispatch(openSubject(subject))}>{subject.code}</Typography>
-          <Typography className={classes.title}>{subject.name}}</Typography>
+          {subject ? (
+            <Grid>
+            <Typography onClick={() => dispatch(openSubject(subject))}>
+              {subject.code}
+            </Typography>
+            <Typography className={classes.title}>
+              {subject.name}
+            </Typography>
+            </Grid>
+          ) : (
+              <Icon>
+                <AddIcon />
+              </Icon>
+            )
+          }
         </CardContent>
       </Card>
     </Grid>

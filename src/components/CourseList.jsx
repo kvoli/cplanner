@@ -31,10 +31,10 @@ const CourseList = () => {
 
         <Grid container direction='row'>
           <Grid item>
-            <SemesterGrid props={{row:0}} />
+            <SemesterGrid props={{row:4}} />
           </Grid>
           <Grid item>
-            <SemesterGrid props={{row:0}} />
+            <SemesterGrid props={{row:5}} />
           </Grid>
         </Grid>
           
