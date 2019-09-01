@@ -10,12 +10,34 @@ const CourseList = () => {
   return (
     <Container>
       <List>
-        <SemesterGrid />
-        <SemesterGrid />
-        <SemesterGrid />
-        <SemesterGrid />
-        <SemesterGrid />
-        <SemesterGrid />
+
+        <Grid container direction='row'>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+        </Grid>
+
+        <Grid container direction='row'>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+        </Grid>
+
+        <Grid container direction='row'>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+          <Grid item>
+            <SemesterGrid />
+          </Grid>
+        </Grid>
+          
       </List>
     </Container>
   );

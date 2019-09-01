@@ -7,8 +7,18 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme => ({
   card: {
     margin: 10,
-    width: 100,
-    height: 100
+    width: 110,
+    height: 110
+  },
+  text: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    textAlign: 'center'
+  },
+  title: {
+    paddingTop: 10
   }
 }));
 
@@ -17,8 +27,9 @@ const SubjectCard = () => {
   return (
     <Grid item>
       <Card className={classes.card}>
-        <CardContent>
-          <Typography>Design of Algorithms</Typography>
+        <CardContent className={classes.text}>
+          <Typography>COMP20007</Typography>
+          <Typography className={classes.title}>Design of Algorithms</Typography>
         </CardContent>
       </Card>    
     </Grid>

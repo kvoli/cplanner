@@ -11,19 +11,23 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    backgroundColor: '#FB1BFB',
+    //backgroundColor: '#FB1BFB',
     maxWidth: 1920,
     padding: 0
   },
   course: {
-    paddingLeft: 20,
+    paddingTop: 45,
+    paddingLeft: 45,
+    paddingBottom: 30,
   },
   major: {
-    paddingLeft: 65,
+    paddingBottom: 50, 
+    paddingLeft: 100,
+    
   },
   courseStuff: {
-    paddingLeft: 100
-  },
+    paddingLeft: 0
+  }
 }));
 
 const SubjectPicker = () => {
@@ -32,17 +36,15 @@ const SubjectPicker = () => {
     <Container className={classes.root} >
       <Grid className={classes.grid} container direction='row'>
         <Grid item xs={8}>
-          <Typography className={classes.course} variant='h2'>Course</Typography>
-          <Typography className={classes.major} variant='h4'>Bachelor of Agriculture</Typography>
+          <Typography className={classes.course} variant='h2'>Bachelor of Science</Typography>
+          <Typography className={classes.major} variant='h4'>Major in Computing and Software Systems</Typography>
           <Container className={classes.courseStuff}>
             <CourseList />
           </Container>
         </Grid>
         <Grid item xs={4}>
           <Requirements />
-          <Container>
-            <SubjectSelector/>
-          </Container>
+          <SubjectSelector/>
         </Grid>
       </Grid>
     </Container>
