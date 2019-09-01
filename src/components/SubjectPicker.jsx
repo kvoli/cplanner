@@ -48,8 +48,8 @@ const SubjectPicker = () => {
     <SubjectModal />
       <Grid className={classes.grid} container direction='row'>
         <Grid item xs={8}>
-          <Typography className={classes.course} variant='h2'>{selection.major}</Typography>
-          <Typography className={classes.major} variant='h4'>Bachelor of {selection.course}</Typography>
+          <Typography className={classes.course} variant='h2'>Bachelor of {selection.course}</Typography>
+          <Typography className={classes.major} variant='h4'>{selection.major}</Typography>
           <Container className={classes.courseStuff}>
             <CourseList />
           </Container>

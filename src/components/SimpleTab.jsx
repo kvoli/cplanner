@@ -8,7 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+<<<<<<< HEAD
 import SearchBar from "./SearchBar";
+=======
+import SubjectCard from './SubjectCard';
+import { GridContextProvider, GridDropZone, GridItem, swap } from 'react-grid-dnd';
+>>>>>>> ceeddf5cc0156f9275f158f13da3c581b8467930
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleTab() {
+export default function SimpleTab({course,major,breadth}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -76,9 +81,28 @@ export default function SimpleTab() {
           <Tab xs={4} label="Breadth" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      
+
       <TabPanel value={value} index={0}>
-        <SearchBar />
+        <Grid container >
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+          <Grid item>
+            <SubjectCard props={{row: 0,col:0}}/>
+          </Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <SearchBar />
