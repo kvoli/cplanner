@@ -7,13 +7,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openSubject } from "../actions/subjectSelector";
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
+import InfoIcon from '@material-ui/icons/Info';
 import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 const useStyles = makeStyles(theme => ({
   card: {
     margin: 10,
     width: 110,
-    height: 110
+    height: 125
   },
   text: {
     paddingLeft: 5,
@@ -24,7 +27,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     paddingTop: 10
+  },
+  button: {
+    fontSize: 16,
   }
+
 }));
 
 
@@ -39,14 +46,15 @@ const SubjectSelectCard = ({ subject }) => {
         <CardContent className={classes.text}>
           {subject ? (
             <Grid>
-            <Typography onClick={() => dispatch(openSubject(subject))}>
-              <Box fontWeight="fontWeightBold" >
-              {subject.code}
-              </Box>
-              <Box fontWeight="fontWeightLight" fontSize={14} >
-              {subject.name}
-              </Box>
-            </Typography>
+              <Typography >
+                <Box fontWeight="fontWeightBold" >
+                  {subject.code}
+                </Box>
+                <Box fontWeight="fontWeightLight" fontSize={14} >
+                  {subject.name}
+                </Box>
+              </Typography>
+              <InfoIcon className={classes.button} onClick={() => dispatch(openSubject(subject))}/>
             </Grid>
           ) : (
               <Icon>

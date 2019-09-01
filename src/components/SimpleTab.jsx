@@ -82,13 +82,6 @@ export default function SimpleTab({ course, major, breadth }) {
     setValue(newValue);
   }
 
-  const [items, setItems] = React.useState({
-    available: [
-      { title: 'Design of Algorithms', code: 'COMP20007' },
-      { title: 'Declarative Programming', code: 'COMP30019' },
-    ]
-  });
-
   function onChange(sourceId, sourceIndex, targetIndex, targetId) {
     // if (targetId) {
     //   const result = move(
@@ -145,39 +138,9 @@ export default function SimpleTab({ course, major, breadth }) {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <GridContextProvider onChange={onChange}>
-          <GridDropZone
-            id='available major'
-            boxesPerRow={4}
-            rowHeight={125}
-            rowWidth={100}
-            style={{ height: '500px', width: '500px' }}
-          >
-            {subjects.map(subject => (
-              <GridItem key={subject.code} xs={3}>
-                <SubjectSelectCard subject={subject} />
-              </GridItem>
-            ))}
-          </GridDropZone>
-        </GridContextProvider>
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <GridContextProvider onChange={onChange}>
-          <GridDropZone
-            id='available breadth'
-            boxesPerRow={4}
-            rowHeight={125}
-            rowWidth={110}
-            style={{ height: '500px', width: '500px' }}
-          >
-            {subjects.map(subject => (
-              <GridItem key={subject.code} xs={3}>
-                <SubjectSelectCard subject={subject} />
-              </GridItem>
-            ))}
-          </GridDropZone>
-        </GridContextProvider>
       </TabPanel>
     </div>
   );
