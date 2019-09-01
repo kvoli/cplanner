@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SemesterGrid = () => {
+const SemesterGrid = ({props}) => {
+  console.log(props)
   const classes = useStyles();
   return (
     <ListItem className={classes.semester}>
@@ -28,10 +29,10 @@ const SemesterGrid = () => {
           <Typography>2019</Typography>
           <Typography>Semester 1</Typography>
         </Grid>
-        <SubjectCard />
-        <SubjectCard />
-        <SubjectCard />
-        <SubjectCard />
+        <SubjectCard props={{ row: props.row, col: 0 }} />
+        <SubjectCard props={{ row: props.row, col: 1 }} />
+        <SubjectCard props={{ row: props.row, col: 2 }} />
+        <SubjectCard props={{ row: props.row, col: 3 }} />
       </Grid>
     </ListItem>
   );

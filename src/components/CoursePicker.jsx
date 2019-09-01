@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import SuggestedTextField from './SuggestedTextField';
 import { Card, CardActionArea, Typography, Icon } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';

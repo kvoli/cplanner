@@ -1,9 +1,28 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 
-const checkRequirements = {code, semester} => {
-  const subject = useSelector(store => store.subjects[code])
-  const selected = useSelector(store => store.subjectSelector)
+const checkRequirements = () => {
+  const subjectList = useSelector(store => store.subjectSelector.selectedList)
+  
+  const selected = useSelector(store => store.subjectSelector.currentSubject)
 
   
+
+  var prereqs = selected.prerequisites.filter(req => req !== subjectList)
+  var coreqs = selected.corequisites
+  var anti = selected.antirequisites
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
 }

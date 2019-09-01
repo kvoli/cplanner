@@ -1,7 +1,5 @@
 import { undergraduate } from "../assets/undergraduate";
 
-
-
 const initialState = undergraduate
 
 const courses = (state = initialState, action) => {

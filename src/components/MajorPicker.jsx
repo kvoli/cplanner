@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import SuggestedTextField from './SuggestedTextField';
 import { Card, CardActionArea, Typography, Icon } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
@@ -43,11 +42,11 @@ const MajorPicker = () => {
 
   const dispatch = useDispatch();
   const courses = useSelector(store => store.courses)
-  const course  = useSelector(store => store.selection.course)
+  const course = useSelector(store => store.selection.course)
   const classes = useStyles();
   console.log(courses)
   console.log(course)
-  const majors = courses[course]['data']
+  const majors = course ? courses[course]['data'] : []
 
   String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -55,31 +54,31 @@ const MajorPicker = () => {
 
   return (
     <React.Fragment>
-    <div className={classes.heroContent}>
-      <Container maxWidth="sm">
-        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Select a Major from {course}
-        </Typography>
-      </Container>
-    </div>
-    <Container className={classes.cardGrid} maxWidth="md">
-      <Grid
-        container
-        spacing={2}
-        direction="column"
-        alignItems="center"
-        justify="flex-start"
-        style={{ minHeight: '100vh' }}
-      >
-        <Grid container spacing={2}>
-          {majors.map(major => (
-            <Grid item key={major} xs={3}>
-              <MajorCard major={major} />
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              Select a major from Bachelor of {course.capitalize()}
+            </Typography>
+          </Container>
+        </div>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid
+            container
+            spacing={2}
+            direction="column"
+            alignItems="center"
+            justify="flex-start"
+            style={{ minHeight: '100vh' }}
+          >
+            <Grid container spacing={2}>
+              {majors.map(major => (
+                <Grid item key={major} xs={3}>
+                  <MajorCard major={major} />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </Grid>
-    </Container>
+          </Grid>
+        </Container>
     </React.Fragment>
   )
 };

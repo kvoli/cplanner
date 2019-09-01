@@ -1,6 +1,4 @@
 import { FILTER_CORE, FILTER_COURSE, FILTER_BREADTH, FILTER_ALL } from "../constants/selectors";
-
-
 const initialState = { filter_core: false, filter_breadth: false, filter_course: false, filter_all: "" }
 
 const filters = (state = initialState, action) => {
