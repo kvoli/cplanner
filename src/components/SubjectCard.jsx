@@ -12,14 +12,15 @@ const useStyles = makeStyles(theme => ({
   card: {
     margin: 10,
     width: 110,
-    height: 110
+    height: 110,
+    fontSize: 10
   },
   text: {
     paddingLeft: 5,
     paddingRight: 5,
     paddingTop: 5,
     paddingBottom: 5,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   title: {
     paddingTop: 10
