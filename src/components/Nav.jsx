@@ -32,26 +32,6 @@ const Nav = () => {
         <Typography variant="h3" color="inherit" noWrap>
           cplanner
         </Typography>
-        <img
-          src="https://zippy.gfycat.com/VagueDampCutworm.gif"
-          className={classes.image}
-        />
-        <img
-          src="https://zippy.gfycat.com/VagueDampCutworm.gif"
-          className={classes.image}
-        />
-        <img
-          src="https://zippy.gfycat.com/VagueDampCutworm.gif"
-          className={classes.image}
-        />
-        <img
-          src="https://zippy.gfycat.com/VagueDampCutworm.gif"
-          className={classes.image}
-        />
-        <img
-          src="https://zippy.gfycat.com/VagueDampCutworm.gif"
-          className={classes.image}
-        />
       </Toolbar>
     </AppBar>
   );
