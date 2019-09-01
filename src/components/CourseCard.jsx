@@ -4,6 +4,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import IconButton from "@material-ui/core/IconButton";
+import { selectCourse } from "../actions/selectorActions";
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   largeButton: {
@@ -44,6 +47,9 @@ const useStyles = makeStyles(theme => ({
   pos: {
     marginBottom: 12,
   },
+  input: {
+    display: 'none',
+  },
 }));
 
 const CourseCard = ({ course }) => {
@@ -54,26 +60,39 @@ const CourseCard = ({ course }) => {
   const type = "Bachelor's Degree"
   const year = "2019"
 
+  const dispatch = useDispatch();
+  const state = useSelector(store => store)
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+
   return (
     <Card className={classes.card}>
-      <CardActionArea>
+      <CardActionArea
+
+        onClick={() => {
+          dispatch(selectCourse(course));
+        }}
+        component={Link}
+        to="/majors"
+      >
         <CardContent className={classes.cardContent}>
           <Grid container direction="column" alignItems="center" justify="stretch">
             <Grid item>
               <Typography gutterBottom variant="h4" component="h2">
-                {course}
+                {course.capitalize()}
               </Typography>
             </Grid>
             <Grid item>
-            <ListItemText primary={type}/>
+              <ListItemText primary={type} />
             </Grid>
             <Grid item>
               <ListItemText secondary={points} />
             </Grid>
             <Grid item>
-                <IconButton className={classes.largeButton} >
-                  <LocalLibraryIcon className={classes.largeIcon} />
-                </IconButton>
+              <IconButton className={classes.largeButton} >
+                <LocalLibraryIcon className={classes.largeIcon} />
+              </IconButton>
 
             </Grid>
           </Grid>

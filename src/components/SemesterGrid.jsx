@@ -22,16 +22,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SemesterGrid = () => {
+const SemesterGrid = ({props}) => {
+  console.log(props)
   const classes = useStyles();
   return (
     <Grid item className={classes.semester}>
       <Typography>Semester 1</Typography>
       <Grid container direction="row">
-        <SubjectCard />
-        <SubjectCard />
-        <SubjectCard />
-        <SubjectCard />
+        <SubjectCard props={{ row: props.row, col: 0 }} />
+        <SubjectCard props={{ row: props.row, col: 1 }} />
+        <SubjectCard props={{ row: props.row, col: 2 }} />
+        <SubjectCard props={{ row: props.row, col: 3 }} />
       </Grid>
     </Grid>
   );

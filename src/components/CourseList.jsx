@@ -13,28 +13,28 @@ const CourseList = () => {
 
         <Grid container direction='row'>
           <Grid item>
-            <SemesterGrid />
+            <SemesterGrid props={{row:0}} />
           </Grid>
           <Grid item>
-            <SemesterGrid />
-          </Grid>
-        </Grid>
-
-        <Grid container direction='row'>
-          <Grid item>
-            <SemesterGrid />
-          </Grid>
-          <Grid item>
-            <SemesterGrid />
+            <SemesterGrid props={{row:1}} />
           </Grid>
         </Grid>
 
         <Grid container direction='row'>
           <Grid item>
-            <SemesterGrid />
+            <SemesterGrid props={{row:2}} />
           </Grid>
           <Grid item>
-            <SemesterGrid />
+            <SemesterGrid props={{row:3}} />
+          </Grid>
+        </Grid>
+
+        <Grid container direction='row'>
+          <Grid item>
+            <SemesterGrid props={{row:0}} />
+          </Grid>
+          <Grid item>
+            <SemesterGrid props={{row:0}} />
           </Grid>
         </Grid>
           
